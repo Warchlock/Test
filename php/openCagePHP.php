@@ -1,6 +1,9 @@
 <?php
 
-$url = 'http://api.geonames.org/findNearbyWikipediaJSON?' . 'lat=' . $_REQUEST['lat'] . '&lng=' . $_REQUEST['lng'] . '&username=warchlock';
+//https://api.opencagedata.com/geocode/v1/json?q=-23.5373732,-46.8374628&pretty=1&key=34c07d089f27453aae0ceecbb17f5bc2
+
+
+$url = 'https://api.opencagedata.com/geocode/v1/json?q=' .  $_REQUEST['lat5'] . ',' . $_REQUEST['lng5'] . '&pretty=1&key=34c07d089f27453aae0ceecbb17f5bc2';
 
 
 $ch = curl_init();

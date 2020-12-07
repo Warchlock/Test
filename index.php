@@ -33,9 +33,9 @@
       <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'restCountries')">Rest countries</button>
         <button class="tablinks" id="btnRun" onclick="openTab(event, 'weather')">Weather</button>
-        <button class="tablinks" onclick="openTab(event, 'wiki')">Wikipedia/poi</button>
+        <button class="tablinks" id="btnRun1" onclick="openTab(event, 'wiki')">Wikipedia/poi</button>
         <button class="tablinks" onclick="openTab(event, 'currency')">Currency</button>
-        <button class="tablinks" onclick="openTab(event, 'dk')">Dk</button>
+        <button class="tablinks" id="btnRun4" onclick="openTab(event, 'dk')">Dk</button>
       </div>
 
       <!-- Tab content -->
@@ -85,18 +85,6 @@
       <!-- call to weather api -->
 
       <div id="weather" class="tabcontent">
-        <select id="lat">
-          <option value="35">35</option>
-
-        </select>
-
-        <select id="lng">
-          <option value="139">139</option>
-        </select>
-
-        <button id="btnRun">Run</button>
-
-        <br><br>
 
         <div id="divResults">
 

@@ -13,19 +13,20 @@ var OpenStreetMap_Mapnik = L.tileLayer(
 // opnecage options:
 
 // var options = {
-//   key: '', // your OpenCage API key
-//   limit: 5 // number of results to be displayed
-//   position: 'topright',
-//   placeholder: 'Search...', // the text in the empty search box
-//   errorMessage: 'Nothing found.',
+//   key: "", // your OpenCage API key
+//   limit: 5, // number of results to be displayed
+//   position: "topright",
+//   placeholder: "Search...", // the text in the empty search box
+//   errorMessage: "Nothing found.",
 //   showResultIcons: false,
 //   collapsed: true,
-//   expand: 'click',
+//   expand: "click",
 //   addResultToMap: true, // if a map marker should be added after the user clicks a result
-//   onResultClick: undefined // callback with result as first parameter
+//   onResultClick: undefined, // callback with result as first parameter
 // };
 
-// opencage
+// // opencage
+
 var options = {
   key: "34c07d089f27453aae0ceecbb17f5bc2",
   limit: 3,
@@ -151,8 +152,8 @@ $("#btnRun1").click(function () {
     type: "POST",
     dataType: "json",
     data: {
-      lat1: $("#lat1").val(),
-      lng1: $("#lng1").val(),
+      lat,
+      lng,
     },
     success: function (result) {
       console.log(result);
@@ -212,8 +213,8 @@ $("#btnRun4").click(function () {
     type: "POST",
     dataType: "json",
     data: {
-      lat4: $("#lat4").val(),
-      lng4: $("#lng4").val(),
+      lat,
+      lng,
     },
     success: function (result) {
       console.log(result);

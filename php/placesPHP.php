@@ -2,7 +2,7 @@
 
 //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=hotel&key=AIzaSyDsM0PM_6gV7m1bc1zS8y4K8usei1-oBZk
 
-$url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?' . 'location=' . $_REQUEST['lat4'] . ',' . $_REQUEST['lng4'] . '&radius=1000' . '&type=hotel&key=AIzaSyDsM0PM_6gV7m1bc1zS8y4K8usei1-oBZk';
+$url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?' . 'location=' . $_REQUEST['lat'] . ',' . $_REQUEST['lng'] . '&radius=1000' . '&type=hotel&key=AIzaSyDsM0PM_6gV7m1bc1zS8y4K8usei1-oBZk';
 
 
 $ch = curl_init();
