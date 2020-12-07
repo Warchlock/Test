@@ -18,7 +18,7 @@
         <option value="139">139</option>
     </select>
 
-    <button id="btnRun">Run</button>
+    <button id="btnRun5">Run</button>
 
     <br><br>
 
@@ -39,7 +39,7 @@
 
 
 
-        <script type="application/javascript" src="../../geonamesExample/libs/js/jquery-2.2.3.min.js"></script>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
         <script src="openCage.js"></script>
 
         </script>

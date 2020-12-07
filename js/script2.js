@@ -121,8 +121,26 @@ function openTab(evt, tabName) {
   document.getElementById(tabName).style.display = "block";
   evt.currentTarget.className += " active";
 }
+// call to open cage, gives you iso and symbol code for restCountries and
 
-// weather call
+$(document).ready(function () {
+  $.ajax({
+    url: "../test/php/openCagePHP.php",
+    type: "POST",
+    dataType: "json",
+    data: {
+      lat,
+      lng,
+    },
+    success: function (result) {
+      console.log(result);
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      // your error code
+    },
+  });
+  return result;
+});
 
 $("#btnRun").click(function () {
   $.ajax({

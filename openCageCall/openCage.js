@@ -1,6 +1,6 @@
 var one;
 
-$("#btnRun5").click(function () {
+$(document).ready(function () {
   $.ajax({
     url: "./openCagePHP.php",
     type: "POST",
