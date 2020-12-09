@@ -2,7 +2,7 @@
 
 
 
-$url = 'https://restcountries.eu/rest/v2/alpha/' . $_REQUEST['iso'];
+$url = 'https://restcountries.eu/rest/v2/alpha/' . $_REQUEST['iso2'];
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

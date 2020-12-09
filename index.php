@@ -31,10 +31,10 @@
     <div class="container">
       <!-- Tab links -->
       <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'restCountries')">Rest countries</button>
+        <button class="tablinks" id="btnRun2" onclick="openTab(event, 'restCountries')">Rest countries</button>
         <button class="tablinks" id="btnRun" onclick="openTab(event, 'weather')">Weather</button>
         <button class="tablinks" id="btnRun1" onclick="openTab(event, 'wiki')">Wikipedia/poi</button>
-        <button class="tablinks" onclick="openTab(event, 'currency')">Currency</button>
+        <button class="tablinks" id="btnRun3" onclick="openTab(event, 'currency')">Currency</button>
         <button class="tablinks" id="btnRun4" onclick="openTab(event, 'dk')">Dk</button>
       </div>
 
@@ -62,7 +62,7 @@
         <?php
 
         // Read JSON file and decode into array.
-        $data = json_decode(file_get_contents('C:\xampp\htdocs\1\php\countryBorders.geo.json'), TRUE);
+        $data = json_decode(file_get_contents('./php/countryBorders.geo.json'), TRUE);
 
         // Start select list
         $html = "<select id=\"iso2\">\n";
@@ -77,7 +77,7 @@
 
         echo $html;
         ?>
-        <button id="btnRun2">Run</button>
+
         <br><br>
 
       </div>
@@ -142,12 +142,6 @@
       <div id="currency" class="tabcontent">
         <div id="divResults">
 
-          <select id="symbol">
-            <option value="USD">usd</option>
-
-          </select>
-
-          <button id="btnRun3">Run</button>
 
           <table>
 

@@ -121,7 +121,7 @@ function openTab(evt, tabName) {
   document.getElementById(tabName).style.display = "block";
   evt.currentTarget.className += " active";
 }
-// call to open cage, gives you iso and symbol code for restCountries and
+// call to open cage, gives you iso and symbol code for restCountries and currency call
 
 $(document).ready(function () {
   $.ajax({
@@ -133,13 +133,59 @@ $(document).ready(function () {
       lng,
     },
     success: function (result) {
+      // rest countries call from inside ajax function to access Iso symbols as variables
+      var iso2 =
+        result["data"]["results"][0]["components"]["ISO_3166-1_alpha-2"];
+      var symbol =
+        result["data"]["results"][0]["annotations"]["currency"]["iso_code"];
+      //data.results[0].annotations.currency.iso_code
+      //data.results[0].components["ISO_3166-1_alpha-2"]
+      //data.results[0].components
+      $("#btnRun2").click(function () {
+        $.ajax({
+          url: "./php/req.php",
+          type: "POST",
+          dataType: "json",
+          data: {
+            iso2,
+          },
+          success: function (result) {
+            console.log(result);
+
+            $("#name2").html(result["data"]["altSpellings"][0]);
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+            // your error code
+          },
+        });
+      });
+      //currency call from inside ajax to get currency symbol as a variable
+
+      $("#btnRun3*").click(function () {
+        $.ajax({
+          url: "./php/currencyphp.php",
+          type: "POST",
+          dataType: "json",
+          data: {
+            symbol,
+          },
+          success: function (result) {
+            console.log(result);
+
+            $("#name3").html(result["data"]["rates"]["GBP"]);
+            //data.rates.GBP
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+            // your error code
+          },
+        });
+      });
       console.log(result);
     },
     error: function (jqXHR, textStatus, errorThrown) {
       // your error code
     },
   });
-  return result;
 });
 
 $("#btnRun").click(function () {
@@ -177,46 +223,6 @@ $("#btnRun1").click(function () {
       console.log(result);
 
       $("#name1").html(result["data"]["geonames"][0]["summary"]);
-    },
-    error: function (jqXHR, textStatus, errorThrown) {
-      // your error code
-    },
-  });
-});
-
-// rest countries call
-$("#btnRun2").click(function () {
-  $.ajax({
-    url: "./php/req.php",
-    type: "POST",
-    dataType: "json",
-    data: {
-      iso: $("#iso2").val(),
-    },
-    success: function (result) {
-      console.log(result);
-
-      $("#name2").html(result["data"]["altSpellings"][0]);
-    },
-    error: function (jqXHR, textStatus, errorThrown) {
-      // your error code
-    },
-  });
-});
-
-//currency call
-$("#btnRun3*").click(function () {
-  $.ajax({
-    url: "./php/currencyphp.php",
-    type: "POST",
-    dataType: "json",
-    data: {
-      symbol: $("#symbol").val(),
-    },
-    success: function (result) {
-      console.log(result);
-
-      $("#name3").html(result["data"]["base"]);
     },
     error: function (jqXHR, textStatus, errorThrown) {
       // your error code
