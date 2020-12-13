@@ -133,14 +133,13 @@ $(document).ready(function () {
       lng,
     },
     success: function (result) {
-      // rest countries call from inside ajax function to access Iso symbols as variables
+      //variables to use in restCountries/currency calls
       var iso2 =
         result["data"]["results"][0]["components"]["ISO_3166-1_alpha-2"];
       var symbol =
         result["data"]["results"][0]["annotations"]["currency"]["iso_code"];
-      //data.results[0].annotations.currency.iso_code
-      //data.results[0].components["ISO_3166-1_alpha-2"]
-      //data.results[0].components
+
+      // rest countries call from inside ajax function to access data as variables
       $("#btnRun2").click(function () {
         $.ajax({
           url: "./php/req.php",
