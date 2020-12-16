@@ -1,5 +1,5 @@
 // init the map
-
+//var json = require("../php/countryBorders.geo.json"); //with path
 var mymap = L.map("mapid").setView([51.505, -0.09], 13);
 var OpenStreetMap_Mapnik = L.tileLayer(
   "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -139,6 +139,48 @@ $(document).ready(function () {
       var symbol =
         result["data"]["results"][0]["annotations"]["currency"]["iso_code"];
 
+      // variables to use in highlightBorders function
+      // var json = (function () {
+      //   var json = null;
+      //   $.ajax({
+      //     async: false,
+      //     global: false,
+      //     url: "./php/countryBorders.geo.json",
+      //     dataType: "json",
+      //     success: function (data) {
+      //       json = data;
+      //     },
+      //   });
+      //   return json;
+      // })();
+      // console.log(json);
+
+      // function to highlight borders based on location
+      $(document).ready(function () {
+        $.getJSON("./php/countryBorders.geo.json", function (data) {
+          for (var j = 0; j < 175; j++) {
+            var result = data.features[j].properties.iso_a2;
+            for (var i = 0; i < result.length; i++) {
+              if (result == iso2) {
+                coord = L.GeoJSON.coordsToLatLngs(
+                  data.features[j].geometry.coordinates,
+                  2
+                );
+
+                function highlightBorders(match) {
+                  L.polyline(match, {
+                    color: "green",
+                    weight: 2,
+                    opacity: 1,
+                  }).addTo(mymap);
+                }
+                highlightBorders(coord);
+              }
+            }
+          }
+        });
+      });
+
       // rest countries call from inside ajax function to access data as variables
       $("#btnRun2").click(function () {
         $.ajax({
@@ -221,7 +263,31 @@ $("#btnRun1").click(function () {
     success: function (result) {
       console.log(result);
 
-      $("#name1").html(result["data"]["geonames"][0]["summary"]);
+      var wikiPopup1 = L.popup()
+        .setLatLng([
+          result["data"]["geonames"][0]["lat"],
+          result["data"]["geonames"][0]["lng"],
+        ])
+        .setContent($("#wikiPopup1").html())
+        .addTo(mymap);
+
+      $("#resultsWiki").html(result["data"]["geonames"][0]["summary"]);
+      var wikiPopup2 = L.popup()
+        .setLatLng([
+          result["data"]["geonames"][1]["lat"],
+          result["data"]["geonames"][1]["lng"],
+        ])
+        .setContent($("#wikiPopup2").html())
+        .addTo(mymap);
+      $("#resultsWiki").html(result["data"]["geonames"][1]["summary"]);
+      var wikiPopup3 = L.popup()
+        .setLatLng([
+          result["data"]["geonames"][2]["lat"],
+          result["data"]["geonames"][2]["lng"],
+        ])
+        .setContent($("#wikiPopup3").html())
+        .addTo(mymap);
+      $("#resultsWiki").html(result["data"]["geonames"][2]["summary"]);
     },
     error: function (jqXHR, textStatus, errorThrown) {
       // your error code
@@ -242,6 +308,47 @@ $("#btnRun4").click(function () {
     success: function (result) {
       console.log(result);
 
+      var wikiPopup1 = L.popup()
+        .setLatLng([
+          result["data"]["results"][0]["geometry"]["location"]["lat"],
+          result["data"]["results"][0]["geometry"]["location"]["lng"],
+        ])
+        .setContent("I am a hotel entry!")
+        .addTo(mymap);
+
+      var hotelPopup2 = L.popup()
+        .setLatLng([
+          result["data"]["results"][1]["geometry"]["location"]["lat"],
+          result["data"]["results"][1]["geometry"]["location"]["lng"],
+        ])
+        .setContent("I am a hotel entry!")
+        .addTo(mymap);
+
+      var hotelPopup3 = L.popup()
+        .setLatLng([
+          result["data"]["results"][2]["geometry"]["location"]["lat"],
+          result["data"]["results"][2]["geometry"]["location"]["lng"],
+        ])
+        .setContent("I am a hotel entry!")
+        .addTo(mymap);
+
+      var hotelPopup4 = L.popup()
+        .setLatLng([
+          result["data"]["results"][3]["geometry"]["location"]["lat"],
+          result["data"]["results"][3]["geometry"]["location"]["lng"],
+        ])
+        .setContent("I am a hotel entry!")
+        .addTo(mymap);
+
+      var hotelPopup5 = L.popup()
+        .setLatLng([
+          result["data"]["results"][4]["geometry"]["location"]["lat"],
+          result["data"]["results"][4]["geometry"]["location"]["lng"],
+        ])
+        .setContent("I am a hotel entry!")
+        .addTo(mymap);
+
+      // data.results[0].geometry.location.lat
       $("#name4").html(result["data"]["results"][0]["vicinity"]);
     },
     error: function (jqXHR, textStatus, errorThrown) {
@@ -249,3 +356,5 @@ $("#btnRun4").click(function () {
     },
   });
 });
+
+// popups test

@@ -16,6 +16,9 @@ body,
 #navbar p {
   display: inline-block;
 }
+.popups {
+  display: none;
+}
 
 /* Style the tab */
 .tab {
