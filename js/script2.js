@@ -192,8 +192,12 @@ $(document).ready(function () {
           },
           success: function (result) {
             console.log(result);
-
-            $("#name2").html(result["data"]["altSpellings"][0]);
+            //data.flag
+            $(".flag").attr("src", result["data"]["flag"]);
+            $("#restCountriesTitle").html(result["data"]["name"]);
+            $("#capital").html(result["data"]["capital"]);
+            $("#currencies").html(result["data"]["currencies"][0]["name"]);
+            $("#timezone").html(result["data"]["timezones"][0]);
           },
           error: function (jqXHR, textStatus, errorThrown) {
             // your error code
@@ -213,7 +217,7 @@ $(document).ready(function () {
           success: function (result) {
             console.log(result);
 
-            $("#name3").html(result["data"]["rates"]["GBP"]);
+            $("#rate").html(result["data"]["rates"]["GBP"]);
             //data.rates.GBP
           },
           error: function (jqXHR, textStatus, errorThrown) {
@@ -241,7 +245,8 @@ $("#btnRun").click(function () {
     success: function (result) {
       console.log(result);
 
-      $("#name").html(result["data"]["weather"][0]["id"]);
+      $("#base").html(result["data"]["base"]);
+      $("#descriptions").html(result["data"]["weather"][0]["description"]);
     },
     error: function (jqXHR, textStatus, errorThrown) {
       // your error code
@@ -271,7 +276,9 @@ $("#btnRun1").click(function () {
         .setContent($("#wikiPopup1").html())
         .addTo(mymap);
 
-      $("#resultsWiki").html(result["data"]["geonames"][0]["summary"]);
+      $("#title1").html(result["data"]["geonames"][0]["title"]);
+      $("#summary1").html(result["data"]["geonames"][0]["summary"]);
+
       var wikiPopup2 = L.popup()
         .setLatLng([
           result["data"]["geonames"][1]["lat"],
@@ -279,7 +286,10 @@ $("#btnRun1").click(function () {
         ])
         .setContent($("#wikiPopup2").html())
         .addTo(mymap);
-      $("#resultsWiki").html(result["data"]["geonames"][1]["summary"]);
+
+      $("#title2").html(result["data"]["geonames"][1]["title"]);
+      $("#summary2").html(result["data"]["geonames"][1]["summary"]);
+
       var wikiPopup3 = L.popup()
         .setLatLng([
           result["data"]["geonames"][2]["lat"],
@@ -287,7 +297,10 @@ $("#btnRun1").click(function () {
         ])
         .setContent($("#wikiPopup3").html())
         .addTo(mymap);
-      $("#resultsWiki").html(result["data"]["geonames"][2]["summary"]);
+
+      $("#title3").html(result["data"]["geonames"][2]["title"]);
+      $("#summary3").html(result["data"]["geonames"][2]["summary"]);
+      $();
     },
     error: function (jqXHR, textStatus, errorThrown) {
       // your error code
@@ -308,48 +321,63 @@ $("#btnRun4").click(function () {
     success: function (result) {
       console.log(result);
 
-      var wikiPopup1 = L.popup()
+      var hotelPopup1 = L.popup()
         .setLatLng([
           result["data"]["results"][0]["geometry"]["location"]["lat"],
           result["data"]["results"][0]["geometry"]["location"]["lng"],
         ])
-        .setContent("I am a hotel entry!")
+        .setContent($("#hotelPopup1").html())
         .addTo(mymap);
+
+      $("#name1").html(result["data"]["results"][0]["name"]);
+      $("#icon1").attr("src", result["data"]["results"][0]["icon"]);
+      // data.results[0].photos[0].html_attributions[0]
 
       var hotelPopup2 = L.popup()
         .setLatLng([
           result["data"]["results"][1]["geometry"]["location"]["lat"],
           result["data"]["results"][1]["geometry"]["location"]["lng"],
         ])
-        .setContent("I am a hotel entry!")
+        .setContent($("#hotelPopup2").html())
         .addTo(mymap);
+
+      $("#name2").html(result["data"]["results"][1]["name"]);
+      $("#icon2").attr("src", result["data"]["results"][1]["icon"]);
 
       var hotelPopup3 = L.popup()
         .setLatLng([
           result["data"]["results"][2]["geometry"]["location"]["lat"],
           result["data"]["results"][2]["geometry"]["location"]["lng"],
         ])
-        .setContent("I am a hotel entry!")
+        .setContent($("#hotelPopup3").html())
         .addTo(mymap);
+
+      $("#name3").html(result["data"]["results"][2]["name"]);
+      $("#icon3").attr("src", result["data"]["results"][2]["icon"]);
 
       var hotelPopup4 = L.popup()
         .setLatLng([
           result["data"]["results"][3]["geometry"]["location"]["lat"],
           result["data"]["results"][3]["geometry"]["location"]["lng"],
         ])
-        .setContent("I am a hotel entry!")
+        .setContent($("#hotelPopup4").html())
         .addTo(mymap);
+
+      $("#name4").html(result["data"]["results"][3]["name"]);
+      $("#icon4").attr("src", result["data"]["results"][3]["icon"]);
 
       var hotelPopup5 = L.popup()
         .setLatLng([
           result["data"]["results"][4]["geometry"]["location"]["lat"],
           result["data"]["results"][4]["geometry"]["location"]["lng"],
         ])
-        .setContent("I am a hotel entry!")
+        .setContent($("#hotelPopup5").html())
         .addTo(mymap);
 
+      $("#name5").html(result["data"]["results"][4]["name"]);
+      $("#icon5").attr("src", result["data"]["results"][4]["icon"]);
+
       // data.results[0].geometry.location.lat
-      $("#name4").html(result["data"]["results"][0]["vicinity"]);
     },
     error: function (jqXHR, textStatus, errorThrown) {
       // your error code

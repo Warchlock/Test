@@ -1,6 +1,6 @@
 body {
   padding-bottom: 120px;
-  padding-top: 25px;
+
   margin: 0;
 }
 html,
@@ -54,4 +54,19 @@ body,
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
+}
+img {
+  width: 80px;
+  height: 40px;
+}
+#logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+}
+.logoSpace {
+}
+.hidden {
+  display: none;
 }
